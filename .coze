@@ -1,0 +1,12 @@
+[project]
+requires = ["nodejs-24"]
+
+[dev]
+build = ["bash", "./scripts/prepare.sh"]
+run = ["bash", "./scripts/dev.sh"]
+deps = ["git", "poppler-utils"] # -> apt install git poppler-utils (pdftotext, pdftoppm)
+
+[deploy]
+build = ["bash","./scripts/build.sh"]
+run = ["bash","./scripts/start.sh"]
+deps = ["git", "poppler-utils"] # -> apt install git poppler-utils (pdftotext, pdftoppm)

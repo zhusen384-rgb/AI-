@@ -1,0 +1,71 @@
+import InterviewSpeechRecognizer from './speechRecognizer.js';
+
+// 初始化语音识别器
+const recognizer = new InterviewSpeechRecognizer({
+  language: 'zh-CN',
+  continuous: true,
+  
+  // 识别到语音内容时的回调
+  onResult: (data) => {
+    const { final, interim, isFinal } = data;
+    
+    // 实时显示临时文本（灰色）
+    if (interim) {
+      updateInterimText(interim);
+    }
+    
+    // 识别完成，发送给AI面试官
+    if (isFinal && final) {
+      console.log('识别到最终文本:', final);
+      sendToAIInterviewer(final);
+    }
+  },
+  
+  onStart: () => {
+    // 更新UI：显示"正在聆听..."
+    updateUIStatus('listening');
+  },
+  
+  onEnd: () => {
+    // 可选：更新UI状态
+    updateUIStatus('idle');
+  },
+  
+  onError: (err) => {
+    console.error('语音错误:', err);
+    showToast(err.message);
+  }
+});
+
+// 控制函数（绑定到按钮）
+function startInterview() {
+  recognizer.start();
+}
+
+function stopInterview() {
+  recognizer.stop();
+}
+
+// 发送给AI面试官的逻辑
+async function sendToAIInterviewer(text) {
+  try {
+    // 调用扣子的工作流或API
+    const response = await fetch('https://your-coze-workflow-endpoint', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_input: text,
+        session_id: 'interview_session_001',
+        role: 'candidate'
+      })
+    });
+    
+    const result = await response.json();
+    
+    // 显示AI回复（可配合语音合成TTS朗读）
+    displayAIResponse(result.reply);
+    
+  } catch (error) {
+    console.error('发送失败:', error);
+  }
+}

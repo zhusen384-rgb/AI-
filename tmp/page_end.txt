@@ -1,0 +1,11 @@
+              取消
+            </Button>
+            <Button variant="destructive" onClick={handleDeleteCandidate}>
+              确认删除
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}

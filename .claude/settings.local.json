@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next:*)",
+      "Bash(npx tsc:*)",
+      "Read(//e/gouge/agent/**)",
+      "Bash(unzip -l \"E:\\\\gouge\\\\agent\\\\migration_export_20260420_095640.zip\")",
+      "Read(//e/微信/压缩包/**)",
+      "Read(//e/微信/压缩包//**)",
+      "Bash(dir \"E:\\\\微信\\\\压缩包\")"
+    ]
+  }
+}

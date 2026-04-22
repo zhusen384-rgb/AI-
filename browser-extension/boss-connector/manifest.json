@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Boss Connector for Interview System",
+  "version": "0.1.0",
+  "description": "Bridge the interview system with the currently logged-in Boss直聘 tab in the same browser.",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://www.zhipin.com/*",
+    "https://zhipin.com/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content-app.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.zhipin.com/*",
+        "https://zhipin.com/*"
+      ],
+      "js": [
+        "content-boss.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}

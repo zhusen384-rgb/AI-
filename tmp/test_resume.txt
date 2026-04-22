@@ -1,0 +1,21 @@
+张三
+软件开发工程师
+
+教育背景：
+北京大学 - 计算机科学与技术 - 本科 - 2018-2022
+
+工作经历：
+腾讯科技 - 后端开发工程师 - 2022-至今
+- 负责电商平台后端架构设计和开发
+- 使用 Node.js 和 PostgreSQL 开发微服务
+- 参与系统性能优化，提升了30%的响应速度
+
+技能：
+- 编程语言：JavaScript, TypeScript, Python
+- 框架：React, Next.js, Express
+- 数据库：PostgreSQL, MongoDB
+- 其他：Git, Docker, Kubernetes
+
+联系方式：
+邮箱：zhangsan@example.com
+电话：13800138000
